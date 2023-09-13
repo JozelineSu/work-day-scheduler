@@ -42,10 +42,22 @@ saveButtonEl.on('click', function () {
 function assignClasses() {
 var time = new Date();
   var hours = time.getHours();
-  var minutes = time.getMinutes();
-  var currentTime = (hours-12) + ":" + minutes;
+  var currentTime = (hours);
 console.log(currentTime);
 
+timeBlock.each(function () {
+  var timeText = $(this).attr("id");
+  
+  if (timeText < currentTime) {
+    $(this).addClass("past");
+
+  } else if (timeText === currentTime) {
+    $(this).addClass("present");
+
+  } else {
+    $(this).addClass("future");
+  }
+})
   
 }
 
